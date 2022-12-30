@@ -1,0 +1,84 @@
+---------------------------------------- PANDAS ----------------------------------------
+
+Import pandas:
+	import pandas as pd
+
+Read csv file to work on:
+	pd.read_csv("filepath")
+	
+Show some data:
+	just type the data name and press enter
+	.head()
+	.tail()
+	.head(amount of rows you want to see)
+	.tail(amount of rows you want to see)
+	data[(data.column_name=='')&(data.column_name=='')]
+
+Count how many times a value in a column appears:
+	data.ColumnName.value_counts()
+	data.ColumnName.value_counts(ascending=True)
+	data.ColumnName.value_counts().sort_index()
+	data.[['column_name','column_name']].value_counts().sort_index()
+	data.coulmn_name.value_counts().nlargest(amount of rows you want to see)
+
+Sort values:
+	.sort_values()
+
+Create data set from other data set:
+	new_data = data[data.column_name]
+
+Group by:
+	data.groupby('column_name)
+
+Examples:
+	olympic_data.groupby('NOC').agg({'Edition':['min','max','count']})
+
+Stack:
+	data.stack()
+	data.stack('column_name')
+	data.unstack()
+
+Examples:
+	USA_gold_history.groupby(['Edition','Gender']).size().unstack('Gender',fill_value=0).plot(kind='bar');
+---------------------------------------- MATPLOTLIB ----------------------------------------
+
+Import matplotlib:
+    import matplotlib.pyplot as plt
+    %matplotlib inline
+
+Plot types:
+    plot()		        - default line plot
+    plot(kind='line')	- tracking changes over time
+    plot(kind='bar')	- comparing between different groups
+    plot(kind='barh')	- comparing between different groups (flipped axis)
+    plot(kind='pie')	- comparing parts of whole
+
+Plot colors:
+    plot(color='')
+
+Plot figure size:
+    plot(figsize=(width,height))
+
+Plot combined info:
+    plot(kind='bar',color='blue',figsize=(5,5))
+
+Plot colormap:
+    plot(kind='pie',colormap='Pastel1')
+
+Examples:
+	olympic_data.Edition.value_counts().sort_index().plot();
+
+Import colormap:
+	from matplotlib.colors import ListedColormap
+
+Create colors example:
+	medal_colors = ['#dbb40c', '#c5c9c7', '#a87900']
+	my_medal_colors = ListedColormap(sns.color_palette(medal_colors))
+
+---------------------------------------- SEABORN ----------------------------------------
+
+Import Seaborn:
+    import seaborn as sns
+
+countplot():
+    seaborn.countplot(x='column_name',data=data_source, hue='column_name)
